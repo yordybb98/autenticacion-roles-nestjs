@@ -23,3 +23,17 @@ model User {
   updatedAt DateTime  @updatedAt
   deletedAt DateTime?
 }
+
+model Cat {
+  id      Int    @id @default(autoincrement())
+  name    String
+  age     Int
+  breed   Breed  @relation(fields: [breedId], references: [id])
+  breedId Int
+}
+
+model Breed {
+  id   Int    @id @default(autoincrement())
+  name String
+  cats Cat[]
+}
